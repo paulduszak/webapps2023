@@ -1,0 +1,82 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "portal",
+      "content": "Some content",
+      "author": "paul"
+    },
+    {
+      "title": "My new Post",
+      "content": "Some content",
+      "author": "Paul",
+      "id": 2
+    },
+    {
+      "title": "My new Post",
+      "content": "Some content",
+      "author": "Paul",
+      "id": 3
+    },
+    {
+      "title": "My new Post",
+      "content": "Some content",
+      "author": "Paul",
+      "id": 4
+    },
+    {
+      "title": "My new Post",
+      "content": "Some content",
+      "author": "Paul",
+      "id": 5
+    },
+    {
+      "title": "My new Post",
+      "content": "Some content",
+      "author": "Paul",
+      "id": 6
+    },
+    {
+      "title": "My new Post",
+      "content": "Some content",
+      "author": "Paul",
+      "id": 7
+    },
+    {
+      "title": "test",
+      "content": "new post",
+      "author": "",
+      "id": 8
+    },
+    {
+      "title": "SECOND NEW POST",
+      "content": "new post 2",
+      "author": "test",
+      "id": 9
+    }
+  ],
+  "users": [
+    {
+      "email": "duszak.paul@gmail.com",
+      "password": "$2a$10$Rd/k4NNQCTqn4/wlXor2IeoKia2RrvJvmWOd/nCOpBdoyRxsdCKZG",
+      "id": 1
+    },
+    {
+      "email": "testuser@test.net",
+      "password": "$2a$10$f8DDbcCZMPGZ0j.teVpXaObVZMhGEVSVj8sSjhjT/yiEnak1wOfBC",
+      "id": 2
+    }
+  ],
+  "themes": [
+    {
+      "id": 1,
+      "primaryColor": "deepskyblue",
+      "secondaryColor": "coral"
+    },
+    {
+      "primaryColor": "red",
+      "secondaryColor": "blue",
+      "id": 2
+    }
+  ]
+}
