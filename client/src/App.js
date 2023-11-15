@@ -11,42 +11,13 @@ import Header from "./Header";
 import ChangeTheme from "./ChangeTheme";
 
 function App() {
-  // const initialPosts = [
-  //   {
-  //     title: "React Hooks",
-  //     content: "The greatest thing since sliced bread!",
-  //     author: "Daniel Bugl",
-  //   },
-  //   {
-  //     title: "Using React Fragments",
-  //     content: "Keeping the DOM tree clean!",
-  //     author: "Daniel Bugl",
-  //   },
-  //   {
-  //     title: "Component Reusability",
-  //     content: "Make your components reusable!",
-  //     author: "Daniel Bugl",
-  //   },
-  // ];
+  // useEffect(getPosts, []);
 
   // useEffect(() => {
-  //   fetch("/api/posts")
-  //     .then((result) => result.json())
-  //     .then((posts) => dispatch({ type: "FETCH_POSTS", posts }));
-  // }, []);
-
-  const [postResponse, getPosts] = useResource(() => ({
-    url: "/posts",
-    method: "get",
-  }));
-
-  useEffect(getPosts, []);
-
-  useEffect(() => {
-    if (postResponse && postResponse.data) {
-      dispatch({ type: "FETCH_POSTS", posts: postResponse.data.reverse() });
-    }
-  }, [postResponse]);
+  //   if (postResponse && postResponse.data) {
+  //     dispatch({ type: "FETCH_POSTS", posts: postResponse.data.reverse() });
+  //   }
+  // }, [postResponse]);
 
   const [state, dispatch] = useReducer(appReducer, {
     user: "",
@@ -60,9 +31,31 @@ function App() {
     secondaryColor: "purple",
   });
 
+  const [postsResponse, getPosts] = useResource(() => ({
+    url: "/post",
+    method: "get",
+    headers: { Authorization: `${state?.user?.access_token}` },
+  }));
+
+  useEffect(() => {
+    getPosts();
+  }, [state?.user?.access_token]);
+  useEffect(() => {
+    if (
+      postsResponse &&
+      postsResponse.isLoading === false &&
+      postsResponse.data
+    ) {
+      dispatch({
+        type: "FETCH_POSTS",
+        posts: postsResponse.data.reverse(),
+      });
+    }
+  }, [postsResponse]);
+
   useEffect(() => {
     if (user) {
-      document.title = `${user}’s Blog`;
+      document.title = `${user.username}’s Blog`;
     } else {
       document.title = "Blog";
     }

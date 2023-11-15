@@ -4,9 +4,9 @@ import Post from "./Post";
 export default function PostList({ posts = [] }) {
   return (
     <div>
-      {posts.map((p, i) => (
-        <Post {...p} key={uuidv4()} />
-      ))}
+      {posts.length === 0 && <h2>No posts found.</h2>}
+      {posts.length > 0 &&
+        posts.map((p, i) => <Post {...p} key={p._id || p.id} />)}
     </div>
   );
 }
